@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Course extends Model
+{
+    use HasFactory;
+    protected $table ='courses';
+    protected $guarded=[];
+
+    
+
+    public function lessons()
+    {
+        return $this->belongsTo(Lesson::class,'id','course_id');
+    }
+    public function quizzes()
+    {
+        return $this->belongsTo(Quiz::class,'id','course_id');
+    }
+}
