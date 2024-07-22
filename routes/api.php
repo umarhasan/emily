@@ -21,12 +21,12 @@ use App\Http\Controllers\Api\AuthController;
 
 Route::post('/auth/register', [AuthController::class, 'Register']);
 Route::post('/auth/login', [AuthController::class, 'Login']);
+Route::get('churches/index', [ChurchController::class,'index']);
 
 // Route::post('login', [AuthController::class, 'login']);
 // Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('churches/index', [ChurchController::class,'index']);
     Route::post('churches/store', [ChurchController::class,'store']);
     Route::post('churches/update', [ChurchController::class,'update']);
     Route::post('churches/delete', [ChurchController::class,'delete']);
