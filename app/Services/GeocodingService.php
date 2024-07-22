@@ -20,9 +20,12 @@ class GeocodingService
             $data = $response->json();
             if (!empty($data)) {
                 $location = $data[0];
+                $addressDetails = $location['address'] ?? [];
                 return [
                     'latitude' => $location['lat'],
                     'longitude' => $location['lon'],
+                    'city' => $addressDetails['city'] ?? ($addressDetails['town'] ?? ($addressDetails['village'] ?? null)),
+                    'country' => $addressDetails['country'] ?? null,
                 ];
             }
         }

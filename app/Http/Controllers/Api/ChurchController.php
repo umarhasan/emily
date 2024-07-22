@@ -41,6 +41,8 @@ class ChurchController extends Controller
                 $request->merge([
                     'latitude' => $coordinates['latitude'],
                     'longitude' => $coordinates['longitude'],
+                    'city' => $coordinates['city'],
+                    'country' => $coordinates['country'],
                 ]);
             }
 
